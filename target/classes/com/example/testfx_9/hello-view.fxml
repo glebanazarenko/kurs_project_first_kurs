@@ -10,12 +10,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="323.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="323.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testfx_9.HelloController">
    <children>
       <AnchorPane maxHeight="20.0" prefHeight="81.0" prefWidth="281.0">
          <children>
-            <Button mnemonicParsing="false" text="Добавить" AnchorPane.leftAnchor="0.0" />
+            <Button mnemonicParsing="false" onAction="#showDialog" text="Добавить" AnchorPane.leftAnchor="0.0" />
             <Button layoutX="108.0" mnemonicParsing="false" text="Изменить" AnchorPane.leftAnchor="106.0" AnchorPane.rightAnchor="106.0" />
             <Button layoutX="225.0" layoutY="1.0" mnemonicParsing="false" text="Удалить" AnchorPane.rightAnchor="0.0" />
          </children>
