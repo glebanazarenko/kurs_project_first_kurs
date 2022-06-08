@@ -36,7 +36,7 @@
       </AnchorPane>
       <AnchorPane prefHeight="588.0" prefWidth="283.0">
          <children>
-            <TableView fx:id="tableQuote" prefHeight="238.0" prefWidth="283.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <TableView fx:id="tableQuote" editable="true" prefHeight="238.0" prefWidth="283.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
                 <TableColumn fx:id="columnFIO" prefWidth="140.0" text="ФИО" />
                 <TableColumn fx:id="columnQuote" prefWidth="140.0" text="Цитата" />

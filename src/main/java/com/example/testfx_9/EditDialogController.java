@@ -13,6 +13,7 @@ public class EditDialogController {
 
     private Person person;
 
+    //кнопка отмена
     public void actionClose(ActionEvent actionEvent){
         Node sourse = (Node) actionEvent.getSource();
         Stage stage = (Stage) sourse.getScene().getWindow();
@@ -21,6 +22,7 @@ public class EditDialogController {
         //MainController.closeDialog();
     }
 
+    //при изменении
     public void setPerson(Person person){
         if (person == null){
             return;
@@ -30,6 +32,7 @@ public class EditDialogController {
         txtQuote.setText(person.getQuote());
     }
 
+    //кнопка ок
     public void actionSave(ActionEvent actionEvent){
         person.setFio(txtFIO.getText());
         person.setQuote(txtQuote.getText());

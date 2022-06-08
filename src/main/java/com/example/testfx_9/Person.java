@@ -4,8 +4,8 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Person {
 
-    private SimpleStringProperty fio;
-    private SimpleStringProperty quote;
+    private SimpleStringProperty fio = new SimpleStringProperty("");
+    private SimpleStringProperty quote = new SimpleStringProperty("");
 
     public Person(){}
 
@@ -17,6 +17,7 @@ public class Person {
     public String getFio(){
         return fio.get();
     }
+
     public void setFio(String fio){
         this.fio.set(fio);
     }

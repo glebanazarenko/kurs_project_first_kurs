@@ -24,6 +24,8 @@ public class MainController {
 
     public static void setMainStage(Stage main_Stage){ mainStage = main_Stage;}
 
+    public Person selectedPerson;
+
     public void actionButtonPressed(ActionEvent actionEvent) {
 
         Object sourse = actionEvent.getSource();
@@ -35,7 +37,7 @@ public class MainController {
 
         Button clickedButton = (Button) sourse;
 
-        Person selectedPerson = (Person) tableQuote.getSelectionModel().getSelectedItem();
+        selectedPerson = (Person) tableQuote.getSelectionModel().getSelectedItem();
 
         editDialogController.setPerson(selectedPerson);
 
@@ -47,8 +49,12 @@ public class MainController {
                 break;
 
             case "btnEdit":
-                editDialogController.setPerson((Person) tableQuote.getSelectionModel().getSelectedItem());
-                showDialog();
+                if(selectedPerson != null) {
+                    quote.delete((Person) tableQuote.getSelectionModel().getSelectedItem());
+                    editDialogController.setPerson(new Person());
+                    showDialog();
+                    quote.add(editDialogController.getPerson());
+                }
                 break;
 
             case "btnDelete":
@@ -154,8 +160,12 @@ public class MainController {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 if(mouseEvent.getClickCount() == 2){
-                    editDialogController.setPerson((Person) tableQuote.getSelectionModel().getSelectedItem());
-                    showDialog();
+                    if(selectedPerson != null) {
+                        quote.delete((Person) tableQuote.getSelectionModel().getSelectedItem());
+                        editDialogController.setPerson(new Person());
+                        showDialog();
+                        quote.add(editDialogController.getPerson());
+                    }
                 }
             }
         });
