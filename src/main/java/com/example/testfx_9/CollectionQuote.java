@@ -6,7 +6,7 @@ import javafx.collections.ObservableList;
 //класс реализовывает интерфейс с помощью коллекции
 public class CollectionQuote implements Quote {
 
-    private ObservableList<Person> personList = FXCollections.observableArrayList(new Person("Глеб", "аааа!!! не работает"));
+    private ObservableList<Person> personList = FXCollections.observableArrayList();
 
     @Override
     public void add(Person person) {
@@ -38,5 +38,6 @@ public class CollectionQuote implements Quote {
 
     public void fillTestData(){
         personList.add(new Person("Назаренко Г.М.", "Опять работать"));
+        personList.add(new Person("Nazarenko G.M.", "I want sleep"));
     }
 }

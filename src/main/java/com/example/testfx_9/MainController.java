@@ -73,7 +73,8 @@ public class MainController {
 
     @FXML
     private void initialize(){
-        /*
+        quote.fillTestData();
+
         columnFIO.setCellValueFactory(new PropertyValueFactory<Person, String>("fio"));
         columnQuote.setCellValueFactory(new PropertyValueFactory<Person, String>("quote"));
 
@@ -84,12 +85,7 @@ public class MainController {
             }
         });
 
-        quote.fillTestData();
-
         tableQuote.setItems(quote.getPersonList());
-        
-         */
-
     }
 
     @FXML
