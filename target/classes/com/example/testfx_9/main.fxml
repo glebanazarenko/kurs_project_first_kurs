@@ -52,7 +52,7 @@
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Label fx:id="lableCount" prefHeight="17.0" prefWidth="132.0" text="Количество записей" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+            <Label fx:id="labelCount" prefHeight="17.0" prefWidth="132.0" text="Количество записей" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
          </children>
          <VBox.margin>
             <Insets bottom="20.0" left="20.0" />

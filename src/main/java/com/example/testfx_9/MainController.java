@@ -86,6 +86,7 @@ public class MainController {
         });
 
         tableQuote.setItems(quote.getPersonList());
+        quote.getPersonList().remove(0);
     }
 
     @FXML
