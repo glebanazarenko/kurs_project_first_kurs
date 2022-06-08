@@ -1,15 +1,14 @@
 package com.example.testfx_9;
 
+import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -21,8 +20,7 @@ public class MainController {
 
     public void showDialog(ActionEvent actionEvent){
         try {
-            bthAdd.setText("clicked");
-
+            //btnAdd.setText("clicked");
 
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("edit.fxml")));
             Scene scene = new Scene(root);
@@ -44,11 +42,13 @@ public class MainController {
         stage.close();
     }
 
-    @FXML
-    private Button bthAdd;
+    private CollectionQuote quote = new CollectionQuote();
 
     @FXML
-    private Button bthEdit;
+    private Button btnAdd;
+
+    @FXML
+    private Button btnEdit;
 
     @FXML
     private Button btnDelete;
@@ -63,7 +63,39 @@ public class MainController {
     private TableView tableQuote;
 
     @FXML
-    private Label lableCount;
+    private TableColumn<Person, String> columnFIO;
+
+    @FXML
+    private TableColumn<Person, String> columnQuote;
+
+    @FXML
+    private Label labelCount;
+
+    @FXML
+    private void initialize(){
+        /*
+        columnFIO.setCellValueFactory(new PropertyValueFactory<Person, String>("fio"));
+        columnQuote.setCellValueFactory(new PropertyValueFactory<Person, String>("quote"));
+
+        quote.getPersonList().addListener(new ListChangeListener<Person>() {
+            @Override
+            public void onChanged(Change<? extends Person> change) {
+                updateCountLabel();
+            }
+        });
+
+        quote.fillTestData();
+
+        tableQuote.setItems(quote.getPersonList());
+        
+         */
+
+    }
+
+    @FXML
+    private void updateCountLabel(){
+        labelCount.setText("Количество записей: " + quote.getPersonList().size());
+    }
 
     /*
     @FXML

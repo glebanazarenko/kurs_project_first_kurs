@@ -1,5 +1,6 @@
 package com.example.testfx_9;
 
+import com.example.testfx_9.MainController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -21,5 +22,5 @@ public class EditDialogController {
     private Button btnOk;
 
     @FXML
-    private Button bthCancel;
+    private Button btnCancel;
 }
