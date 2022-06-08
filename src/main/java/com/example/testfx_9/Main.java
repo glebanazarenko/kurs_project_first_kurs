@@ -1,6 +1,7 @@
 package com.example.testfx_9;
 
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,12 +13,18 @@ import java.util.Objects;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("main.fxml")));
-        Scene scene = new Scene(root);
+        System.out.println((getClass().getResource("main.fxml")));
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(Objects.requireNonNull(getClass().getResource("main.fxml")));
+        Parent fxmlMain = fxmlLoader.load();
+
+        Scene scene = new Scene(fxmlMain);
         stage.setTitle("Главное окно");
         stage.setMinHeight(440);
         stage.setMinWidth(340);
         stage.setScene(scene);
+
+        MainController.setMainStage(stage);
         //testData();
         stage.show();
 

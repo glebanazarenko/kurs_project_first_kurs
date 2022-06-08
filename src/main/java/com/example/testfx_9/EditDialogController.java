@@ -1,6 +1,7 @@
 package com.example.testfx_9;
 
 import com.example.testfx_9.MainController;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -15,16 +16,24 @@ public class EditDialogController {
     public void actionClose(ActionEvent actionEvent){
         Node sourse = (Node) actionEvent.getSource();
         Stage stage = (Stage) sourse.getScene().getWindow();
-        stage.close();
+        stage.hide();
 
         //MainController.closeDialog();
     }
 
     public void setPerson(Person person){
+        if (person == null){
+            return;
+        }
         this.person = person;
-
         txtFIO.setText(person.getFio());
         txtQuote.setText(person.getQuote());
+    }
+
+    public void actionSave(ActionEvent actionEvent){
+        person.setFio(txtFIO.getText());
+        person.setQuote(txtQuote.getText());
+        actionClose(actionEvent);
     }
 
     @FXML
@@ -38,4 +47,8 @@ public class EditDialogController {
 
     @FXML
     private Button btnCancel;
+
+    public Person getPerson() {
+        return person;
+    }
 }
