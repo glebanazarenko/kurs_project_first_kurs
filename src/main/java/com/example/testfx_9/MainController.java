@@ -1,6 +1,7 @@
 package com.example.testfx_9;
 
 import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,12 +17,38 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class MainController {
-    static Stage stage = new Stage();
 
     public void showDialog(ActionEvent actionEvent){
+
+        Object sourse = actionEvent.getSource();
+
+        //если кнопка не нажата, выходим из метода
+        if (!(sourse instanceof Button)){
+            return;
+        }
+
+        Button clickedButton = (Button) sourse;
+
+        Person selectedPerson = (Person) tableQuote.getSelectionModel().getSelectedItem();
+
+        switch (clickedButton.getId()){
+            case "btnAdd":
+                System.out.println("add " + selectedPerson.getFio());
+                break;
+
+            case "btnEdit":
+                System.out.println("edit " + selectedPerson.getFio());
+                break;
+
+            case "btnDelete":
+                System.out.println("delete " + selectedPerson.getFio());
+                break;
+        }
+
         try {
             //btnAdd.setText("clicked");
 
+            Stage stage = new Stage();
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("edit.fxml")));
             Scene scene = new Scene(root);
             stage.setTitle("Окно добавление");
@@ -38,9 +65,11 @@ public class MainController {
         }
     }
 
+    /*
     public static void closeDialog(){
         stage.close();
     }
+     */
 
     private CollectionQuote quote = new CollectionQuote();
 
@@ -73,6 +102,8 @@ public class MainController {
 
     @FXML
     private void initialize(){
+        //tableQuote.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
         quote.fillTestData();
 
         columnFIO.setCellValueFactory(new PropertyValueFactory<Person, String>("fio"));

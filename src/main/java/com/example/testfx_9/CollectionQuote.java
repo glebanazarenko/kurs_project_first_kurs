@@ -39,5 +39,7 @@ public class CollectionQuote implements Quote {
     public void fillTestData(){
         personList.add(new Person("Назаренко Г.М.", "Опять работать"));
         personList.add(new Person("Nazarenko G.M.", "I want sleep"));
+        personList.add(new Person("Nazarenko G.M.", "But i can't"));
+        personList.add(new Person("Nazarenko m.d.", "ye? i'm good"));
     }
 }
