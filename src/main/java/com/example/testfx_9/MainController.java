@@ -50,10 +50,9 @@ public class MainController {
 
             case "btnEdit":
                 if(selectedPerson != null) {
-                    quote.delete((Person) tableQuote.getSelectionModel().getSelectedItem());
-                    editDialogController.setPerson(new Person());
+                    editDialogController.setPerson(selectedPerson);
                     showDialog();
-                    quote.add(editDialogController.getPerson());
+                    quote.update(selectedPerson);
                 }
                 break;
 
@@ -107,12 +106,6 @@ public class MainController {
     private Button btnDelete;
 
     @FXML
-    private Button bthSearch;
-
-    @FXML
-    private TextField txtSearch;
-
-    @FXML
     private TableView tableQuote;
 
     @FXML
@@ -160,11 +153,10 @@ public class MainController {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 if(mouseEvent.getClickCount() == 2){
+                    selectedPerson = (Person) tableQuote.getSelectionModel().getSelectedItem();
                     if(selectedPerson != null) {
-                        quote.delete((Person) tableQuote.getSelectionModel().getSelectedItem());
-                        editDialogController.setPerson(new Person());
+                        editDialogController.setPerson(selectedPerson);
                         showDialog();
-                        quote.add(editDialogController.getPerson());
                     }
                 }
             }
