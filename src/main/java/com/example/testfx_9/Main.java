@@ -15,16 +15,18 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         System.out.println((getClass().getResource("main.fxml")));
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(Objects.requireNonNull(getClass().getResource("main.fxml")));
+        fxmlLoader.setLocation(Objects.requireNonNull(getClass().getResource("start.fxml")));
         Parent fxmlMain = fxmlLoader.load();
 
         Scene scene = new Scene(fxmlMain);
         stage.setTitle("Главное окно");
         stage.setMinHeight(440);
         stage.setMinWidth(340);
+        stage.setResizable(false);
+        StartController.setMainStage(stage);
         stage.setScene(scene);
 
-        MainController.setMainStage(stage);
+        //MainController.setMainStage(stage);
         //testData();
         stage.show();
 
