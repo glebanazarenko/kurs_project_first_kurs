@@ -59,6 +59,10 @@ public class MainController {
             case "btnDelete":
                 quote.delete((Person) tableQuote.getSelectionModel().getSelectedItem());
                 break;
+
+            case "btnReturn":
+                StartController.mainStage.show();
+                mainStage.close();
         }
     }
 
@@ -104,6 +108,9 @@ public class MainController {
 
     @FXML
     private Button btnDelete;
+
+    @FXML
+    private Button btnReturn;
 
     @FXML
     private TableView tableQuote;

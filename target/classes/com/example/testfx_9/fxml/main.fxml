@@ -8,13 +8,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="323.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testfx_9.MainController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="411.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testfx_9.MainController">
    <children>
-      <AnchorPane maxHeight="20.0" prefHeight="81.0" prefWidth="281.0">
+      <AnchorPane maxHeight="26.0" prefHeight="26.0" prefWidth="239.0">
          <children>
             <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#actionButtonPressed" text="Добавить" AnchorPane.leftAnchor="0.0" />
-            <Button fx:id="btnEdit" layoutX="108.0" mnemonicParsing="false" onAction="#actionButtonPressed" text="Изменить" AnchorPane.leftAnchor="106.0" />
-            <Button fx:id="btnDelete" layoutX="225.0" layoutY="1.0" mnemonicParsing="false" onAction="#actionButtonPressed" text="Удалить" AnchorPane.leftAnchor="225.0" />
+            <Button fx:id="btnEdit" layoutX="108.0" layoutY="1.0" mnemonicParsing="false" onAction="#actionButtonPressed" text="Изменить" AnchorPane.leftAnchor="108.0" />
+            <Button fx:id="btnDelete" layoutX="230.0" layoutY="1.0" mnemonicParsing="false" onAction="#actionButtonPressed" text="Удалить" AnchorPane.leftAnchor="230.0" />
+            <Button fx:id="btnReturn" layoutX="342.0" layoutY="1.0" mnemonicParsing="false" onAction="#actionButtonPressed" text="⮌" />
          </children>
          <VBox.margin>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

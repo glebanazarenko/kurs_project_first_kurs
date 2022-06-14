@@ -37,6 +37,7 @@ public class StartController {
             editDialogStage.setTitle("Главное окно");;
             editDialogStage.setMinWidth(440);
             editDialogStage.setMinHeight(340);
+            MainController.setMainStage(editDialogStage);
             editDialogStage.setScene(new Scene(fxmlEdit));
         }
         //для ожидание закрытия окна
@@ -69,7 +70,7 @@ public class StartController {
 
     private CollectionQuote quote = new CollectionQuote();
 
-    private static Stage mainStage;
+    public static Stage mainStage;
 
     public static void setMainStage(Stage main_Stage){ mainStage = main_Stage;}
 
