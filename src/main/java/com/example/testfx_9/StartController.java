@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -51,8 +50,8 @@ public class StartController {
         if(editDialogStage == null) {
             editDialogStage = new Stage();
             editDialogStage.setTitle("Окно с цитатами");
-            editDialogStage.setMinWidth(440);
-            editDialogStage.setMinHeight(340);
+            editDialogStage.setMinWidth(425);
+            editDialogStage.setMinHeight(440);
             MainGuestController.setMainStage(editDialogStage);
             editDialogStage.setScene(new Scene(fxmlEdit));
         }

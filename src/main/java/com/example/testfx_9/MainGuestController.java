@@ -98,6 +98,9 @@ public class MainGuestController {
     private TableColumn<Person, String> columnQuote;
 
     @FXML
+    private TableColumn<Person, String> columnSubject;
+
+    @FXML
     private Label labelCount;
 
     @FXML
@@ -107,6 +110,7 @@ public class MainGuestController {
         // устанавливаем тип и значение которое должно хранится в колонке
         columnFIO.setCellValueFactory(new PropertyValueFactory<Person, String>("fio"));
         columnQuote.setCellValueFactory(new PropertyValueFactory<Person, String>("quote"));
+        columnSubject.setCellValueFactory(new PropertyValueFactory<Person, String>("subject"));
 
         fillData();
 
