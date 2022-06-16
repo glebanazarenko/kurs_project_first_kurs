@@ -8,8 +8,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="685.0" prefWidth="755.0" style="-fx-background-color: #def7ff;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testfx_9.StartController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="632.0" prefWidth="755.0" style="-fx-background-color: #def7ff;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testfx_9.StartController">
    <children>
       <AnchorPane maxHeight="20.0" prefHeight="81.0" prefWidth="281.0">
          <children>
@@ -21,7 +22,7 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </VBox.margin>
       </AnchorPane>
-      <AnchorPane prefHeight="325.0" prefWidth="715.0">
+      <AnchorPane prefHeight="201.0" prefWidth="715.0">
          <VBox.margin>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </VBox.margin>
@@ -44,16 +45,20 @@
             <TextArea editable="false" layoutX="472.0" layoutY="155.0" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: deepskyblue;" text="А жить хорошо еще лучше" wrapText="true" AnchorPane.rightAnchor="43.0" />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane prefHeight="287.0" prefWidth="755.0">
          <children>
-            <TextArea blendMode="DARKEN" editable="false" layoutX="20.0" prefHeight="94.0" prefWidth="224.0" style="-fx-background-color: #f4f4f4;" text="Теперь можно не запоминать фразы,которые могут запросто забыться через время. Запишите их и вы сможете вспомнить их в любое время" wrapText="true" />
-            <TextArea blendMode="DARKEN" editable="false" layoutX="267.0" prefHeight="94.0" prefWidth="224.0" style="-fx-background-color: #f4f4f4;" text="Вы сможете смотреть фразы, оставленные другими людьми, тем самым узнавая новых преподавателей или дополняя знания о прошлых" wrapText="true" />
-            <TextArea blendMode="DARKEN" editable="false" layoutX="516.0" prefHeight="94.0" prefWidth="224.0" style="-fx-background-color: #f4f4f4;" text="Если фраза кого-то оскорбила или задела и наши админы все еще не удалили вашу запись, то вы сможете удалить свою запись" wrapText="true" />
+            <TextArea blendMode="DARKEN" editable="false" layoutX="14.0" layoutY="47.0" prefHeight="94.0" prefWidth="224.0" style="-fx-background-color: #f4f4f4;" text="Теперь можно не запоминать фразы,которые могут запросто забыться через время. Запишите их и вы сможете вспомнить их в любое время" wrapText="true" />
+            <TextArea blendMode="DARKEN" editable="false" layoutX="266.0" layoutY="47.0" prefHeight="94.0" prefWidth="224.0" style="-fx-background-color: #f4f4f4;" text="Вы сможете смотреть фразы, оставленные другими людьми, тем самым узнавая новых преподавателей или дополняя знания о прошлых" wrapText="true" />
+            <TextArea blendMode="DARKEN" editable="false" layoutX="517.0" layoutY="47.0" prefHeight="94.0" prefWidth="224.0" style="-fx-background-color: #f4f4f4;" text="Если фраза кого-то оскорбила или задела и наши админы все еще не удалили вашу запись, то вы сможете удалить свою запись" wrapText="true" />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane prefHeight="22.0" prefWidth="735.0">
          <children>
-            <Label prefHeight="17.0" prefWidth="132.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+            <TextFlow layoutY="128.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="386.0" text="Примечание: В режиме гостя нельзя добавлять и изменять цитаты" />
+               </children>
+            </TextFlow>
          </children>
          <VBox.margin>
             <Insets bottom="20.0" left="20.0" />

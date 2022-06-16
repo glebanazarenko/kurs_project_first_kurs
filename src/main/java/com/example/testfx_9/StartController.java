@@ -26,7 +26,7 @@ public class StartController {
         switch (clickedButton.getId()) {
             case "guest":
                 mainStage.hide();
-                showDialog();
+                showDialogGuest();
         }
     }
 
@@ -34,7 +34,7 @@ public class StartController {
 
         if(editDialogStage == null) {
             editDialogStage = new Stage();
-            editDialogStage.setTitle("Главное окно");;
+            editDialogStage.setTitle("Окно с цитатами");
             editDialogStage.setMinWidth(440);
             editDialogStage.setMinHeight(340);
             MainController.setMainStage(editDialogStage);
@@ -46,9 +46,25 @@ public class StartController {
         //editDialogStage.show();
     }
 
+    private void showDialogGuest(){
+
+        if(editDialogStage == null) {
+            editDialogStage = new Stage();
+            editDialogStage.setTitle("Окно с цитатами");
+            editDialogStage.setMinWidth(440);
+            editDialogStage.setMinHeight(340);
+            MainGuestController.setMainStage(editDialogStage);
+            editDialogStage.setScene(new Scene(fxmlEdit));
+        }
+        //для ожидание закрытия окна
+        editDialogStage.showAndWait();
+
+        //editDialogStage.show();
+    }
+
     private void initLoader(){
         try {
-            fxmlLoader.setLocation(getClass().getResource("main.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("mainGuest.fxml"));
             fxmlEdit = fxmlLoader.load();
         } catch (IOException e) {
             e.printStackTrace();

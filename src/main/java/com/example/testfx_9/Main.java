@@ -20,8 +20,8 @@ public class Main extends Application {
 
         Scene scene = new Scene(fxmlMain);
         stage.setTitle("Главное окно");
-        stage.setMinHeight(440);
-        stage.setMinWidth(340);
+        stage.setMinHeight(632);
+        stage.setMinWidth(755);
         stage.setResizable(false);
         StartController.setMainStage(stage);
         stage.setScene(scene);
