@@ -27,47 +27,34 @@ public class StartController {
                 initLoaderGuest();
                 mainStage.hide();
                 showDialogGuest();
+                break;
             case "login":
                 initLoaderSignUp();
                 mainStage.hide();
                 showDialogSignUp();
+                break;
         }
-    }
-
-    private void showDialog(){
-
-        if(editDialogStage == null) {
-            editDialogStage = new Stage();
-            editDialogStage.setTitle("Окно с цитатами");
-            editDialogStage.setMinWidth(440);
-            editDialogStage.setMinHeight(340);
-            MainController.setMainStage(editDialogStage);
-            editDialogStage.setScene(new Scene(fxmlEdit));
-        }
-        //для ожидание закрытия окна
-        editDialogStage.showAndWait();
-
-        //editDialogStage.show();
     }
 
     private void showDialogGuest(){
 
-        if(editDialogStage == null) {
-            editDialogStage = new Stage();
-            editDialogStage.setTitle("Окно с цитатами");
-            editDialogStage.setMinWidth(425);
-            editDialogStage.setMinHeight(440);
-            MainGuestController.setMainStage(editDialogStage);
-            editDialogStage.setScene(new Scene(fxmlEdit));
-        }
+        editDialogStage = new Stage();
+        editDialogStage.setTitle("Окно с цитатами");
+        editDialogStage.setMinWidth(425);
+        editDialogStage.setMinHeight(440);
+        editDialogStage.setScene(new Scene(fxmlEdit));
+        MainGuestController.setMainStage(editDialogStage);
+
         //для ожидание закрытия окна
-        editDialogStage.showAndWait();
+        editDialogStage.show();
 
         //editDialogStage.show();
     }
 
     private void initLoaderGuest(){
         try {
+            fxmlLoader = new FXMLLoader();
+            fxmlEdit = null;
             fxmlLoader.setLocation(getClass().getResource("mainGuest.fxml"));
             fxmlEdit = fxmlLoader.load();
         } catch (IOException e) {
@@ -77,6 +64,8 @@ public class StartController {
 
     private void initLoaderSignUp(){
         try {
+            fxmlLoader = new FXMLLoader();
+            fxmlEdit = null;
             fxmlLoader.setLocation(getClass().getResource("signUp.fxml"));
             fxmlEdit = fxmlLoader.load();
         } catch (IOException e) {
@@ -86,29 +75,28 @@ public class StartController {
 
     private void showDialogSignUp(){
 
-        if(editDialogStage == null) {
-            editDialogStage = new Stage();
-            editDialogStage.setTitle("Окно входа");
-            editDialogStage.setMinWidth(408);
-            editDialogStage.setMinHeight(106);
-            MainGuestController.setMainStage(editDialogStage);
-            editDialogStage.setScene(new Scene(fxmlEdit));
-        }
+        editDialogStage = new Stage();
+        editDialogStage.setTitle("Окно входа");
+        editDialogStage.setMinWidth(408);
+        editDialogStage.setMinHeight(106);
+        MainGuestController.setMainStage(editDialogStage);
+        editDialogStage.setScene(new Scene(fxmlEdit));
         //для ожидание закрытия окна
-        editDialogStage.showAndWait();
+        editDialogStage.show();
 
         //editDialogStage.show();
     }
 
     @FXML
     private void initialize() {
+        System.out.println("88003555555");
     }
 
     private Stage editDialogStage;
 
     private EditDialogController editDialogController;
 
-    private FXMLLoader fxmlLoader = new FXMLLoader();
+    private FXMLLoader fxmlLoader;
 
     private Parent fxmlEdit;
 

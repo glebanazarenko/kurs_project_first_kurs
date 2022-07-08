@@ -25,21 +25,10 @@ public class MainGuestController {
     public static void setMainStage(Stage main_Stage){ mainStage = main_Stage;}
 
     public void actionButtonPressed(ActionEvent actionEvent) {
-
-        Object sourse = actionEvent.getSource();
-
-        //если кнопка не нажата, выходим из метода
-        if (!(sourse instanceof Button)) {
-            return;
-        }
-
-        Button clickedButton = (Button) sourse;
-
-        switch (clickedButton.getId()) {
-            case "btnReturn":
-                StartController.mainStage.show();
-                mainStage.close();
-        }
+        Node sourse = (Node) actionEvent.getSource();
+        Stage stage = (Stage) sourse.getScene().getWindow();
+        stage.close();
+        Main.startStage.show();
     }
 
     /*

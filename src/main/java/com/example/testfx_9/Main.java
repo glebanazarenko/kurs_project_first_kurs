@@ -11,9 +11,10 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class Main extends Application {
+    public static Stage startStage;
     @Override
     public void start(Stage stage) throws IOException {
-        System.out.println((getClass().getResource("signUp.fxml")));
+        System.out.println((getClass().getResource("main.fxml")));
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(Objects.requireNonNull(getClass().getResource("start.fxml")));
         Parent fxmlMain = fxmlLoader.load();
@@ -23,11 +24,12 @@ public class Main extends Application {
         stage.setMinHeight(632);
         stage.setMinWidth(755);
         stage.setResizable(false);
-        StartController.setMainStage(stage);
         stage.setScene(scene);
+        StartController.setMainStage(stage);
 
         //MainController.setMainStage(stage);
         //testData();
+        startStage = stage;
         stage.show();
 
     }
