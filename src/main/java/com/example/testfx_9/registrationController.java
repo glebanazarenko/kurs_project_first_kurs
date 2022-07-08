@@ -12,8 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class signUpController {
-
+public class registrationController {
     //кнопка отмена
     public void actionClose(ActionEvent actionEvent){
         Node sourse = (Node) actionEvent.getSource();
@@ -67,6 +66,9 @@ public class signUpController {
     private FXMLLoader fxmlLoader = new FXMLLoader();
 
     private Parent fxmlEdit;
+
+    @FXML
+    private TextField txtName;
 
     @FXML
     private TextField txtLogin;

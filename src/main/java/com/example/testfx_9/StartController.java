@@ -33,6 +33,11 @@ public class StartController {
                 mainStage.hide();
                 showDialogSignUp();
                 break;
+            case "register":
+                initLoaderRegister();
+                mainStage.hide();
+                showDialogRegister();
+                break;
         }
     }
 
@@ -75,6 +80,30 @@ public class StartController {
 
     private void showDialogSignUp(){
 
+        editDialogStage = new Stage();
+        editDialogStage.setTitle("Окно входа");
+        editDialogStage.setMinWidth(408);
+        editDialogStage.setMinHeight(106);
+        MainGuestController.setMainStage(editDialogStage);
+        editDialogStage.setScene(new Scene(fxmlEdit));
+        //для ожидание закрытия окна
+        editDialogStage.show();
+
+        //editDialogStage.show();
+    }
+
+    private void initLoaderRegister(){
+        try {
+            fxmlLoader = new FXMLLoader();
+            fxmlEdit = null;
+            fxmlLoader.setLocation(getClass().getResource("registration.fxml"));
+            fxmlEdit = fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showDialogRegister(){
         editDialogStage = new Stage();
         editDialogStage.setTitle("Окно входа");
         editDialogStage.setMinWidth(408);
