@@ -13,7 +13,7 @@ import java.util.Objects;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        System.out.println((getClass().getResource("main.fxml")));
+        System.out.println((getClass().getResource("start.fxml")));
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(Objects.requireNonNull(getClass().getResource("start.fxml")));
         Parent fxmlMain = fxmlLoader.load();
