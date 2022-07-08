@@ -42,54 +42,22 @@ public class MainGuestController {
         }
     }
 
-    private void showDialog(){
-
-        if(editDialogStage == null) {
-            editDialogStage = new Stage();
-            editDialogStage.setTitle("Редактирование записи");
-            editDialogStage.setMinWidth(450);
-            editDialogStage.setMinHeight(120);
-            editDialogStage.setResizable(false);
-            editDialogStage.setScene(new Scene(fxmlEdit));
-            editDialogStage.initModality(Modality.APPLICATION_MODAL);
-            editDialogStage.initOwner(mainStage);
-        }
-        //для ожидание закрытия окна
-        editDialogStage.showAndWait();
-
-        //editDialogStage.show();
-    }
-
     /*
     public static void closeDialog(){
         stage.close();
     }
      */
 
-    private Stage editDialogStage;
-
-    private EditDialogController editDialogController;
-
-    private FXMLLoader fxmlLoader = new FXMLLoader();
-
-    private Parent fxmlEdit;
-
     private CollectionQuote quote = new CollectionQuote();
-
-    @FXML
-    private Button btnAdd;
-
-    @FXML
-    private Button btnEdit;
-
-    @FXML
-    private Button btnDelete;
 
     @FXML
     private Button btnReturn;
 
     @FXML
     private TableView tableQuote;
+
+    @FXML
+    private TableColumn<Person, String> columnData;
 
     @FXML
     private TableColumn<Person, String> columnFIO;
@@ -108,6 +76,7 @@ public class MainGuestController {
         //tableQuote.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         // устанавливаем тип и значение которое должно хранится в колонке
+        columnData.setCellValueFactory(new PropertyValueFactory<Person, String>("data"));
         columnFIO.setCellValueFactory(new PropertyValueFactory<Person, String>("fio"));
         columnQuote.setCellValueFactory(new PropertyValueFactory<Person, String>("quote"));
         columnSubject.setCellValueFactory(new PropertyValueFactory<Person, String>("subject"));
@@ -121,7 +90,7 @@ public class MainGuestController {
         System.out.println(tableQuote.getItems().size());
         tableQuote.setItems(quote.getPersonList());
         System.out.println(tableQuote.getItems().size());
-        System.out.println( tableQuote.getItems().sorted().getComparator());
+        System.out.println(tableQuote.getItems().sorted().getComparator());
     }
 
 

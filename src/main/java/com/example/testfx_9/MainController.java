@@ -116,6 +116,9 @@ public class MainController {
     private TableView tableQuote;
 
     @FXML
+    private TableColumn<Person, String> columnData;
+
+    @FXML
     private TableColumn<Person, String> columnFIO;
 
     @FXML
@@ -132,6 +135,7 @@ public class MainController {
         //tableQuote.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         // устанавливаем тип и значение которое должно хранится в колонке
+        columnData.setCellValueFactory(new PropertyValueFactory<Person, String>("data"));
         columnFIO.setCellValueFactory(new PropertyValueFactory<Person, String>("fio"));
         columnQuote.setCellValueFactory(new PropertyValueFactory<Person, String>("quote"));
         columnSubject.setCellValueFactory(new PropertyValueFactory<Person, String>("subject"));
