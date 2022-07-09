@@ -28,7 +28,14 @@ public class CollectionQuote implements Quote {
         String teacher = person.getFio();
 
         databaseHandler handler = new databaseHandler();
-        handler.updateQuote(data, quote, subject, teacher, id_quote);
+        if(MainController.check.equals("edit")) {
+            handler.updateQuote(data, quote, subject, teacher, id_quote);
+
+        }else {
+            if (MainController.check.equals("add")) {
+                handler.addQuote(data, quote, subject, teacher);
+            }
+        }
     }
 
     @Override

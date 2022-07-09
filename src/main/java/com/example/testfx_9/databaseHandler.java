@@ -3,6 +3,7 @@ package com.example.testfx_9;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.SplittableRandom;
 
 public class databaseHandler{
     static int id;
@@ -123,21 +124,17 @@ public class databaseHandler{
         return null;
     }
 
-    public void addQuote(){
-        String data = "2008-12-03";
-        String quote_text = "Что делать?";
-        String subject_id = "1";
-        String teacher_id = "3";
+    public void addQuote(String data, String quote_text, String subject_name, String teacher_name){
 
-        String insert = "INSERT INTO `quotes` (`date`, `quote_text`, `subject_id`, `teacher_id`)" +
-                " VALUES (?, ?, ?, ?)";
+        String insert = "INSERT INTO `quotes` (`id`, `date`, `quote_text`, `subject_id`, `teacher_id`) \n" +
+                "VALUES (NULL, ?, ?, (SELECT s.id FROM subject AS s WHERE s.subject_name = ?), (SELECT t.id FROM teacher AS t WHERE t.teacher_name = ?));";
 
         try {
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
             preparedStatement.setString(1, data);
             preparedStatement.setString(2, quote_text);
-            preparedStatement.setString(3, subject_id);
-            preparedStatement.setString(4, teacher_id);
+            preparedStatement.setString(3, subject_name);
+            preparedStatement.setString(4, teacher_name);
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
