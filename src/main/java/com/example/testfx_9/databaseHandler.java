@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class databaseHandler{
+    static int id;
     static Connection connection;
     public static Connection getDbConnection(){
         try {
@@ -34,13 +35,15 @@ public class databaseHandler{
             preparedStatement.setString(4, role_level);
 
             preparedStatement.executeUpdate();
+
+            checkUser(login, password);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     public int checkUser(String login, String password){
-        String insert = "SELECT users.role_level FROM users WHERE users.login = ? AND users.password = ?;";
+        String insert = "SELECT users.role_level, users.id FROM users WHERE users.login = ? AND users.password = ?;";
 
         try {
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
@@ -51,6 +54,7 @@ public class databaseHandler{
             int count = 0;
             while (resultSet.next()){
                 String role_level = resultSet.getString("role_level");
+                id = resultSet.getInt("id");
                 System.out.println("role_level = " + role_level);
                 count ++;
             }

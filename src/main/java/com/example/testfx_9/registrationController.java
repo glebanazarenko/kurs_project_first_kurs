@@ -26,6 +26,7 @@ public class registrationController {
     public void actionSave(ActionEvent actionEvent){
         databaseHandler dbHandler = new databaseHandler();
         dbHandler.registrationUser(txtName.getText(), txtLogin.getText(), txtPassword.getText());
+        System.out.println("id user = " + databaseHandler.id);
         initLoader();
         Node sourse = (Node) actionEvent.getSource();
         Stage stage = (Stage) sourse.getScene().getWindow();
