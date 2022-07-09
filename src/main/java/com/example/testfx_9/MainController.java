@@ -62,6 +62,8 @@ public class MainController {
 
             case "btnDelete":
                 quote.delete((Person) tableQuote.getSelectionModel().getSelectedItem());
+                databaseHandler handler = new databaseHandler();
+                handler.deleteQuote(selectedPerson.getData(), selectedPerson.getQuote(), selectedPerson.getSubject(), selectedPerson.getFio());
                 break;
 
             case "btnReturn":

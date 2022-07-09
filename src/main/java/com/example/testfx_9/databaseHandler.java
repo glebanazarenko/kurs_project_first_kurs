@@ -190,21 +190,17 @@ public class databaseHandler{
         return 0;
     }
 
-    public static void deleteQuote() {
-        String data = "2008-12-03";
-        String quote_text = "Что делать?";
-        String subject_id = "1";
-        String teacher_id = "3";
+    public void deleteQuote(String data, String quote_text, String subject_name, String teacher_name) {
 
         String insert = "DELETE FROM quotes\n" +
-                "WHERE date = ? AND quotes_text = ? AND subject_id = ? AND teacher_id = ?";
+                "WHERE date = ? AND quote_text = ? AND subject_id = (SELECT s.id FROM subject AS s WHERE s.subject_name = ?) AND teacher_id = (SELECT t.id FROM teacher AS t WHERE t.teacher_name = ?)";
 
         try {
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
             preparedStatement.setString(1, data);
             preparedStatement.setString(2, quote_text);
-            preparedStatement.setString(3, subject_id);
-            preparedStatement.setString(4, teacher_id);
+            preparedStatement.setString(3, subject_name);
+            preparedStatement.setString(4, teacher_name);
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
