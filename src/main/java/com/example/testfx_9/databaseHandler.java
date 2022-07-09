@@ -66,15 +66,10 @@ public class databaseHandler{
         return 0;
     }
 
-    public void updateUser(){
-        String new_name = "Олег Евстропович";
-        String new_login = "AH212";
-        String new_password = "Gleb121";
-        String new_role_level = "user";
-        String user_id = "5";
+    public void updateUser(String new_name, String new_login, String new_password, String user_id){
 
         String insert = "UPDATE `users` " +
-                "SET `name` = ?, `login` = ?, `password` = ?, `role_level` = ? " +
+                "SET `name` = ?, `login` = ?, `password` = ?" +
                 "WHERE `users`.`id` = ?";
 
         try {
@@ -82,8 +77,7 @@ public class databaseHandler{
             preparedStatement.setString(1, new_name);
             preparedStatement.setString(2, new_login);
             preparedStatement.setString(3, new_password);
-            preparedStatement.setString(4, new_role_level);
-            preparedStatement.setString(5, user_id);
+            preparedStatement.setString(4, user_id);
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -151,29 +145,52 @@ public class databaseHandler{
         }
     }
 
-    public static void updateQuote(){
-        String data = "2008-12-03";
-        String quote_text = "Что делать?";
-        String subject_id = "1";
-        String teacher_id = "3";
-        String quotes_id = "1";
+    public void updateQuote(String data, String quote_text, String subject_name, String teacher_name, int quotes_id){
 
-        String insert = "UPDATE `quotes` " +
-                "SET `date` = ?, `quote_text` = ?, `subject_id` = ?, `teacher_id` = ? " +
-                "WHERE `quotes`.`id` = ?";
+        String insert = "UPDATE `quotes` \n" +
+                "SET `date` = ?, `quote_text` = ?, `subject_id` = (SELECT s.id FROM subject AS s WHERE s.subject_name = ?), `teacher_id` = (SELECT t.id FROM teacher AS t WHERE t.teacher_name = ?) \n" +
+                "WHERE `quotes`.`id` = ?;";
+
 
         try {
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
             preparedStatement.setString(1, data);
             preparedStatement.setString(2, quote_text);
-            preparedStatement.setString(3, subject_id);
-            preparedStatement.setString(4, teacher_id);
-            preparedStatement.setString(5, quotes_id);
+            preparedStatement.setString(3, subject_name);
+            preparedStatement.setString(4, teacher_name);
+            preparedStatement.setInt(5, quotes_id);
 
             preparedStatement.executeUpdate();
+            System.out.println("Привет, как дела?");
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public int id_qoutes(String data, String teacher_name, String quote_text, String subject_name){
+        String insert = "SELECT a.id\n" +
+                "FROM quotes AS a, teacher AS t, subject AS s\n" +
+                "WHERE a.date = ? AND a.quote_text = ? AND (SELECT t.id FROM teacher AS t WHERE t.teacher_name = ?) = a.teacher_id AND (SELECT s.id FROM subject AS s WHERE s.subject_name = ?) = a.subject_id\n" +
+                "LIMIT 1;";
+
+        try {
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
+            preparedStatement.setString(1, data);
+            preparedStatement.setString(2, quote_text);
+            preparedStatement.setString(3, teacher_name);
+            preparedStatement.setString(4, subject_name);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            int id_quote = 0;
+            while (resultSet.next()) {
+                id_quote = resultSet.getInt("id");
+            }
+            return id_quote;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return 0;
     }
 
     public static void deleteQuote() {

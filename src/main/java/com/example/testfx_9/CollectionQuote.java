@@ -1,6 +1,5 @@
 package com.example.testfx_9;
 
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -18,7 +17,18 @@ public class CollectionQuote implements Quote {
 
     @Override
     public void update(Person person) {
+
+    }
+
+    public static void update(Person person, int id_quote) {
         //в этом нужно нужно обновить ссотвествующую запись в БД
+        String data = person.getData();
+        String quote = person.getQuote();
+        String subject = person.getSubject();
+        String teacher = person.getFio();
+
+        databaseHandler handler = new databaseHandler();
+        handler.updateQuote(data, quote, subject, teacher, id_quote);
     }
 
     @Override

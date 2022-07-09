@@ -39,6 +39,7 @@ public class EditDialogController {
         person.setFio(txtFIO.getText());
         person.setQuote(txtQuote.getText());
         person.setSubject(txtSubject.getText());
+        CollectionQuote.update(person, MainController.id_quote);
         actionClose(actionEvent);
     }
 

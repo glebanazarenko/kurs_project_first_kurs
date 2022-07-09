@@ -18,6 +18,8 @@ import java.io.IOException;
 public class MainController {
     private static Stage mainStage;
 
+    public static int id_quote;
+
     public static void setMainStage(Stage main_Stage){ mainStage = main_Stage;}
 
     public Person selectedPerson;
@@ -48,7 +50,9 @@ public class MainController {
                 if(selectedPerson != null) {
                     editDialogController.setPerson(selectedPerson);
                     showDialog();
-                    quote.update(selectedPerson);
+                    databaseHandler handler = new databaseHandler();
+                    id_quote = handler.id_qoutes(selectedPerson.getData(), selectedPerson.getFio(), selectedPerson.getQuote(), selectedPerson.getSubject());
+                    //quote.update(selectedPerson, id_quote);
                 }
                 break;
 
