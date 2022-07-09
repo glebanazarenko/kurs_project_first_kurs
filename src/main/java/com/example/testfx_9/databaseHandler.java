@@ -1,6 +1,9 @@
 package com.example.testfx_9;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Date;
+
 public class databaseHandler{
     static Connection connection;
     public static Connection getDbConnection(){
@@ -95,6 +98,31 @@ public class databaseHandler{
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public ArrayList Quotes(){
+        String insert = "SELECT a.date, t.teacher_name, a.quote_text, s.subject_name  " +
+                "FROM quotes AS a, teacher AS t, subject AS s  " +
+                "WHERE t.id = a.teacher_id AND s.id = a.subject_id;";
+
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = getDbConnection().prepareStatement(insert);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            ArrayList arrayList = new ArrayList<Person>();
+            while (resultSet.next()){
+                Date data = resultSet.getDate("date");
+                String teacher_name = resultSet.getString("teacher_name");
+                String quote_text = resultSet.getString("quote_text");
+                String subject_name = resultSet.getString("subject_name");
+                Person new_person = new Person(data.toString(), teacher_name, quote_text, subject_name);
+                arrayList.add(new_person);
+            }
+            return arrayList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public void addQuote(){

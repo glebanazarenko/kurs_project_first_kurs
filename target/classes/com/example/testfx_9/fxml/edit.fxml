@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="166.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testfx_9.EditDialogController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="192.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testfx_9.EditDialogController">
    <left>
       <VBox prefHeight="200.0" prefWidth="120.0" BorderPane.alignment="CENTER">
          <children>
@@ -22,6 +22,11 @@
                </VBox.margin>
             </Label>
             <Label text="Предмет">
+               <VBox.margin>
+                  <Insets bottom="5.0" right="5.0" top="15.0" />
+               </VBox.margin>
+            </Label>
+            <Label text="Дата">
                <VBox.margin>
                   <Insets bottom="5.0" right="5.0" top="15.0" />
                </VBox.margin>
@@ -46,6 +51,11 @@
                </VBox.margin>
             </TextField>
             <TextField fx:id="txtSubject">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="txtData">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>

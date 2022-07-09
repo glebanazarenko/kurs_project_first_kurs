@@ -27,6 +27,7 @@ public class EditDialogController {
             return;
         }
         this.person = person;
+        txtData.setText(person.getData());
         txtFIO.setText(person.getFio());
         txtQuote.setText(person.getQuote());
         txtSubject.setText(person.getSubject());
@@ -34,11 +35,15 @@ public class EditDialogController {
 
     //кнопка ок
     public void actionSave(ActionEvent actionEvent){
+        person.setData(txtData.getText());
         person.setFio(txtFIO.getText());
         person.setQuote(txtQuote.getText());
         person.setSubject(txtSubject.getText());
         actionClose(actionEvent);
     }
+
+    @FXML
+    private TextField txtData;
 
     @FXML
     private TextField txtFIO;
