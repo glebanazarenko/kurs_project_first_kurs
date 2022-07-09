@@ -25,7 +25,6 @@ public class databaseHandler{
 
         try {
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
-            preparedStatement = connection.prepareStatement(insert);
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, login);
             preparedStatement.setString(3, password);
@@ -35,6 +34,29 @@ public class databaseHandler{
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public int checkUser(String login, String password){
+        String insert = "SELECT users.role_level FROM users WHERE users.login = ? AND users.password = ?;";
+
+        try {
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
+            preparedStatement.setString(1, login);
+            preparedStatement.setString(2, password);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            int count = 0;
+            while (resultSet.next()){
+                String role_level = resultSet.getString("role_level");
+                System.out.println("role_level = " + role_level);
+                count ++;
+            }
+
+            return count;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     public void updateUser(){

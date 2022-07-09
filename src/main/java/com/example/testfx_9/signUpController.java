@@ -25,11 +25,16 @@ public class signUpController {
 
     //кнопка ок
     public void actionSave(ActionEvent actionEvent){
-        initLoader();
-        Node sourse = (Node) actionEvent.getSource();
-        Stage stage = (Stage) sourse.getScene().getWindow();
-        stage.close();
-        showDialog();
+        databaseHandler dbHandler = new databaseHandler();
+        if(dbHandler.checkUser(txtLogin.getText(), txtPassword.getText()) > 0){
+            initLoader();
+            Node sourse = (Node) actionEvent.getSource();
+            Stage stage = (Stage) sourse.getScene().getWindow();
+            stage.close();
+            showDialog();
+        }else {
+            System.out.println("Нет аккаунта под таким логином и паролем");
+        }
 
 //        person.setFio(txtFIO.getText());
 //        person.setQuote(txtQuote.getText());
