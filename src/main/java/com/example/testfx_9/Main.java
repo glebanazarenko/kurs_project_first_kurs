@@ -14,9 +14,10 @@ public class Main extends Application {
     public static Stage startStage;
     @Override
     public void start(Stage stage) throws IOException {
-        System.out.println((getClass().getResource("main.fxml")));
+        System.out.println((getClass().getResource("fxml/main.fxml")));
+        System.out.println(databaseHandler.getDbConnection());
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(Objects.requireNonNull(getClass().getResource("start.fxml")));
+        fxmlLoader.setLocation(Objects.requireNonNull(getClass().getResource("fxml/start.fxml")));
         Parent fxmlMain = fxmlLoader.load();
 
         Scene scene = new Scene(fxmlMain);

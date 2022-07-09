@@ -60,7 +60,7 @@ public class StartController {
         try {
             fxmlLoader = new FXMLLoader();
             fxmlEdit = null;
-            fxmlLoader.setLocation(getClass().getResource("mainGuest.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("fxml/mainGuest.fxml"));
             fxmlEdit = fxmlLoader.load();
         } catch (IOException e) {
             e.printStackTrace();
@@ -71,7 +71,7 @@ public class StartController {
         try {
             fxmlLoader = new FXMLLoader();
             fxmlEdit = null;
-            fxmlLoader.setLocation(getClass().getResource("signUp.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("fxml/signUp.fxml"));
             fxmlEdit = fxmlLoader.load();
         } catch (IOException e) {
             e.printStackTrace();
@@ -96,7 +96,7 @@ public class StartController {
         try {
             fxmlLoader = new FXMLLoader();
             fxmlEdit = null;
-            fxmlLoader.setLocation(getClass().getResource("registration.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("fxml/registration.fxml"));
             fxmlEdit = fxmlLoader.load();
         } catch (IOException e) {
             e.printStackTrace();

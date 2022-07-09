@@ -40,7 +40,7 @@ public class signUpController {
         try {
             fxmlLoader = new FXMLLoader();
             fxmlEdit = null;
-            fxmlLoader.setLocation(getClass().getResource("/com/example/testfx_9/fxml/main.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("fxml/main.fxml"));
             fxmlEdit = fxmlLoader.load();
         } catch (IOException e) {
             e.printStackTrace();

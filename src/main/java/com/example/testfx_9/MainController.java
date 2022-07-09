@@ -1,12 +1,10 @@
 package com.example.testfx_9;
 
 import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -14,10 +12,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class MainController {
     private static Stage mainStage;
@@ -79,7 +75,7 @@ public class MainController {
             editDialogStage.initOwner(mainStage);
         }
         //для ожидание закрытия окна
-        editDialogStage.showAndWait();
+        editDialogStage.show();
 
         //editDialogStage.show();
     }
@@ -180,7 +176,7 @@ public class MainController {
 
     private void initLoader(){
         try {
-            fxmlLoader.setLocation(getClass().getResource("edit.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("fxml/edit.fxml"));
             fxmlEdit = fxmlLoader.load();
             editDialogController = fxmlLoader.getController();
         } catch (IOException e) {

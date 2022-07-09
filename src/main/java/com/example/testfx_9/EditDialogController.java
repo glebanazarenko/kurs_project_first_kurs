@@ -17,8 +17,7 @@ public class EditDialogController {
     public void actionClose(ActionEvent actionEvent){
         Node sourse = (Node) actionEvent.getSource();
         Stage stage = (Stage) sourse.getScene().getWindow();
-        stage.hide();
-
+        stage.close();
         //MainController.closeDialog();
     }
 

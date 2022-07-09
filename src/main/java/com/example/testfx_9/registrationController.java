@@ -24,6 +24,8 @@ public class registrationController {
 
     //кнопка ок
     public void actionSave(ActionEvent actionEvent){
+        databaseHandler dbHandler = new databaseHandler();
+        dbHandler.registrationUser(txtName.getText(), txtLogin.getText(), txtPassword.getText());
         initLoader();
         Node sourse = (Node) actionEvent.getSource();
         Stage stage = (Stage) sourse.getScene().getWindow();
@@ -39,7 +41,7 @@ public class registrationController {
         try {
             fxmlLoader = new FXMLLoader();
             fxmlEdit = null;
-            fxmlLoader.setLocation(getClass().getResource("/com/example/testfx_9/fxml/main.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("fxml/main.fxml"));
             fxmlEdit = fxmlLoader.load();
         } catch (IOException e) {
             e.printStackTrace();
