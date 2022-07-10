@@ -30,9 +30,9 @@ public class registrationController {
     public void actionSave(ActionEvent actionEvent){
         databaseHandler dbHandler = new databaseHandler();
         if(StartController.checkUserExist){
-            dbHandler.updateUser(txtName.getText(), txtLogin.getText(), txtPassword.getText(), databaseHandler.id);
+            dbHandler.updateUser(txtName.getText(), txtLogin.getText(), dbHandler.hashPassword(txtPassword.getText()), databaseHandler.id);
         }else {
-            dbHandler.registrationUser(txtName.getText(), txtLogin.getText(), txtPassword.getText());
+            dbHandler.registrationUser(txtName.getText(), txtLogin.getText(), dbHandler.hashPassword(txtPassword.getText()));
         }
         System.out.println("id user = " + databaseHandler.id);
         initLoader();

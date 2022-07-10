@@ -27,7 +27,7 @@ public class signUpController {
     //кнопка ок
     public void actionSave(ActionEvent actionEvent){
         databaseHandler dbHandler = new databaseHandler();
-        if(dbHandler.checkUser(txtLogin.getText(), txtPassword.getText()) > 0){
+        if(dbHandler.checkUser(txtLogin.getText(), dbHandler.hashPassword(txtPassword.getText())) > 0){
             initLoader();
             Node sourse = (Node) actionEvent.getSource();
             Stage stage = (Stage) sourse.getScene().getWindow();

@@ -1,5 +1,7 @@
 package com.example.testfx_9;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -267,5 +269,24 @@ public class databaseHandler{
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public String hashPassword(String password){
+        try {
+            MessageDigest md5 = MessageDigest.getInstance("MD5");
+            byte[] bytes = md5.digest(password.getBytes());
+
+            StringBuilder builder = new StringBuilder();
+            for (byte password_hash : bytes) {
+                builder.append(String.format("%02X",password_hash));
+                //last_password_hash = password_hash;
+            }
+            System.out.println(builder.toString() + "          ");
+            String newPassword = builder.toString();
+            return newPassword;
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 }
