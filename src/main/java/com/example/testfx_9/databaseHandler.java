@@ -67,7 +67,7 @@ public class databaseHandler{
         return 0;
     }
 
-    public void updateUser(String new_name, String new_login, String new_password, String user_id){
+    public void updateUser(String new_name, String new_login, String new_password, int user_id){
 
         String insert = "UPDATE `users` " +
                 "SET `name` = ?, `login` = ?, `password` = ?" +
@@ -78,7 +78,7 @@ public class databaseHandler{
             preparedStatement.setString(1, new_name);
             preparedStatement.setString(2, new_login);
             preparedStatement.setString(3, new_password);
-            preparedStatement.setString(4, user_id);
+            preparedStatement.setInt(4, user_id);
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {

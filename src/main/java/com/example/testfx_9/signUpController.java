@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class signUpController {
+    public static Stage MainWindow;
 
     //кнопка отмена
     public void actionClose(ActionEvent actionEvent){
@@ -63,6 +64,7 @@ public class signUpController {
             editDialogStage.setScene(new Scene(fxmlEdit));
         }
         //для ожидание закрытия окна
+        MainWindow = editDialogStage;
         editDialogStage.showAndWait();
 
         //editDialogStage.show();

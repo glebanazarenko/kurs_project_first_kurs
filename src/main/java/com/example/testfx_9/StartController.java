@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class StartController {
+    public static boolean checkUserExist = false;
 
     public void actionButtonPressed(ActionEvent actionEvent) {
         Object sourse = actionEvent.getSource();

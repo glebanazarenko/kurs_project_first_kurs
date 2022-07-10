@@ -18,14 +18,22 @@ public class registrationController {
         Node sourse = (Node) actionEvent.getSource();
         Stage stage = (Stage) sourse.getScene().getWindow();
         stage.close();
-        Main.startStage.show();
+        if(StartController.checkUserExist) {
+            signUpController.MainWindow.show();
+        }else {
+            Main.startStage.show();
+        }
         //MainController.closeDialog();
     }
 
     //кнопка ок
     public void actionSave(ActionEvent actionEvent){
         databaseHandler dbHandler = new databaseHandler();
-        dbHandler.registrationUser(txtName.getText(), txtLogin.getText(), txtPassword.getText());
+        if(StartController.checkUserExist){
+            dbHandler.updateUser(txtName.getText(), txtLogin.getText(), txtPassword.getText(), databaseHandler.id);
+        }else {
+            dbHandler.registrationUser(txtName.getText(), txtLogin.getText(), txtPassword.getText());
+        }
         System.out.println("id user = " + databaseHandler.id);
         initLoader();
         Node sourse = (Node) actionEvent.getSource();
@@ -58,6 +66,7 @@ public class registrationController {
             MainController.setMainStage(editDialogStage);
             editDialogStage.setScene(new Scene(fxmlEdit));
         }
+        signUpController.MainWindow = editDialogStage;
         //для ожидание закрытия окна
         editDialogStage.showAndWait();
 

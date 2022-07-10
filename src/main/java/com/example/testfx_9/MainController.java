@@ -115,6 +115,27 @@ public class MainController {
     }
      */
 
+    public void updateUser(ActionEvent actionEvent){
+        mainStage.close();
+        try {
+            fxmlLoader = new FXMLLoader();
+            fxmlEdit = null;
+            fxmlLoader.setLocation(getClass().getResource("fxml/registration.fxml"));
+            fxmlEdit = fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        editDialogStage = new Stage();
+        editDialogStage.setTitle("Окно редакции профиля");
+        editDialogStage.setMinWidth(408);
+        editDialogStage.setMinHeight(106);
+        MainGuestController.setMainStage(editDialogStage);
+        editDialogStage.setScene(new Scene(fxmlEdit));
+        StartController.checkUserExist = true;
+        //для ожидание закрытия окна
+        editDialogStage.show();
+    }
+
     private Stage editDialogStage;
 
     private EditDialogController editDialogController;
@@ -136,6 +157,9 @@ public class MainController {
 
     @FXML
     private Button btnReturn;
+
+    @FXML
+    private Button btnUpdate;
 
     @FXML
     private TableView tableQuote;
