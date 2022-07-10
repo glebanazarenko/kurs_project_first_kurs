@@ -118,22 +118,22 @@ public class MainController {
     public void updateUser(ActionEvent actionEvent){
         mainStage.close();
         try {
-            fxmlLoader = new FXMLLoader();
-            fxmlEdit = null;
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            Parent fxmlEdit = null;
             fxmlLoader.setLocation(getClass().getResource("fxml/registration.fxml"));
             fxmlEdit = fxmlLoader.load();
+            Stage editDialogStage = new Stage();
+            editDialogStage.setTitle("Окно редакции профиля");
+            editDialogStage.setMinWidth(408);
+            editDialogStage.setMinHeight(106);
+            MainGuestController.setMainStage(editDialogStage);
+            editDialogStage.setScene(new Scene(fxmlEdit));
+            StartController.checkUserExist = true;
+            //для ожидание закрытия окна
+            editDialogStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        editDialogStage = new Stage();
-        editDialogStage.setTitle("Окно редакции профиля");
-        editDialogStage.setMinWidth(408);
-        editDialogStage.setMinHeight(106);
-        MainGuestController.setMainStage(editDialogStage);
-        editDialogStage.setScene(new Scene(fxmlEdit));
-        StartController.checkUserExist = true;
-        //для ожидание закрытия окна
-        editDialogStage.show();
     }
 
     private Stage editDialogStage;

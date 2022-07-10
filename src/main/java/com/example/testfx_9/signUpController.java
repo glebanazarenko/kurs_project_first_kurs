@@ -65,7 +65,7 @@ public class signUpController {
         }
         //для ожидание закрытия окна
         MainWindow = editDialogStage;
-        editDialogStage.showAndWait();
+        editDialogStage.show();
 
         //editDialogStage.show();
     }
