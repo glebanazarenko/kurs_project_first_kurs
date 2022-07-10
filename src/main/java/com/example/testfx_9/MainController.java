@@ -55,7 +55,7 @@ public class MainController {
                     editDialogController.setPerson(selectedPerson);
                     databaseHandler handler = new databaseHandler();
                     id_quote = handler.id_qoutes(selectedPerson.getData(), selectedPerson.getFio(), selectedPerson.getQuote(), selectedPerson.getSubject());
-                    if(handler.checkQuote(id_quote) > 0) {
+                    if(handler.checkQuote(id_quote) > 0 || databaseHandler.role_level.equals("admin")) {
                         showDialog();
                     }else{
                         System.out.println("У вас нет доступа к этой цитате");

@@ -34,6 +34,8 @@ public class CollectionQuote implements Quote {
         }else {
             if (MainController.check.equals("add")) {
                 handler.addQuote(data, quote, subject, teacher);
+                int idQuote = handler.id_qoutes(data, teacher, quote, subject);
+                handler.addQuoteControl(databaseHandler.id, idQuote);
             }
         }
     }

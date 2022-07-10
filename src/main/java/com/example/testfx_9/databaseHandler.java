@@ -7,6 +7,7 @@ import java.util.Date;
 public class databaseHandler{
     static int id;
     static Connection connection;
+    static String role_level;
     public static Connection getDbConnection(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -53,7 +54,7 @@ public class databaseHandler{
             ResultSet resultSet = preparedStatement.executeQuery();
             int count = 0;
             while (resultSet.next()){
-                String role_level = resultSet.getString("role_level");
+                role_level = resultSet.getString("role_level");
                 id = resultSet.getInt("id");
                 System.out.println("role_level = " + role_level);
                 count ++;
@@ -162,6 +163,20 @@ public class databaseHandler{
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addQuoteControl(int id_user, int id_quote){
+        String insert = "INSERT INTO `control_quotes` (`quote_id`, `user_id`) VALUES (?, ?)";
+
+        try{
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
+            preparedStatement.setInt(1, id_quote);
+            preparedStatement.setInt(2, id_user);
+
+            preparedStatement.executeUpdate();
+        }catch (SQLException e) {
             e.printStackTrace();
         }
     }
