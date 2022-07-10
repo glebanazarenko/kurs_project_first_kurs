@@ -3,7 +3,6 @@ package com.example.testfx_9;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.SplittableRandom;
 
 public class databaseHandler{
     static int id;
@@ -122,6 +121,31 @@ public class databaseHandler{
             e.printStackTrace();
         }
         return null;
+    }
+
+    public int checkQuote(int id_qoute){
+        String insert = "SELECT control_quotes.user_id\n" +
+                "FROM control_quotes\n" +
+                "WHERE control_quotes.quote_id = ?;";
+
+        try{
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
+            preparedStatement.setInt(1, id_qoute);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            int count = 0;
+            while (resultSet.next()){
+                int user_id_ok = resultSet.getInt("user_id");
+                System.out.println("id_user_ok = " + user_id_ok);
+                if(user_id_ok == id) {
+                    count++;
+                }
+            }
+
+            return count;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     public void addQuote(String data, String quote_text, String subject_name, String teacher_name){

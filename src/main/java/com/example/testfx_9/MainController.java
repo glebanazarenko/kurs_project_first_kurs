@@ -53,9 +53,13 @@ public class MainController {
                 if(selectedPerson != null) {
                     check = "edit";
                     editDialogController.setPerson(selectedPerson);
-                    showDialog();
                     databaseHandler handler = new databaseHandler();
                     id_quote = handler.id_qoutes(selectedPerson.getData(), selectedPerson.getFio(), selectedPerson.getQuote(), selectedPerson.getSubject());
+                    if(handler.checkQuote(id_quote) > 0) {
+                        showDialog();
+                    }else{
+                        System.out.println("У вас нет доступа к этой цитате");
+                    }
                     //quote.update(selectedPerson, id_quote);
                 }
                 break;
