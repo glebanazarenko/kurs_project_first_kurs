@@ -14,6 +14,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MainController {
     private static Stage mainStage;
@@ -58,7 +59,21 @@ public class MainController {
                     if(handler.checkQuote(id_quote) > 0 || databaseHandler.role_level.equals("admin")) {
                         showDialog();
                     }else{
-                        System.out.println("У вас нет доступа к этой цитате");
+                        if((databaseHandler.role_level.equals("verifier"))){
+                            ArrayList id_quotes = handler.checkQuoteVer(databaseHandler.id);
+                            boolean check = true;
+                            for (Object idQuote : id_quotes) {
+                                if ((Integer) idQuote == id_quote) {
+                                    showDialog();
+                                    check = false;
+                                }
+                            }
+                            if(check){
+                                System.out.println("У вас нет доступа к этой цитате");
+                            }
+                        }else {
+                            System.out.println("У вас нет доступа к этой цитате");
+                        }
                     }
                     //quote.update(selectedPerson, id_quote);
                 }

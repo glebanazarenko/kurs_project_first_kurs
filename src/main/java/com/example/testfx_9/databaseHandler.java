@@ -149,6 +149,28 @@ public class databaseHandler{
         return 0;
     }
 
+    public ArrayList checkQuoteVer(int id_ver){
+        String insert = "SELECT control_quotes.quote_id\n" +
+                "FROM control_quotes, control\n" +
+                "WHERE control.controlled_id = ? AND control.user_id = control_quotes.user_id;";
+        try {
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
+            preparedStatement.setInt(1, id_ver);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            ArrayList id_quotes = new ArrayList<Integer>();
+            while (resultSet.next()){
+                int quote_id = resultSet.getInt("quote_id");
+                System.out.println("quote_id_ok = " + quote_id);
+                id_quotes.add(quote_id);
+            }
+            return id_quotes;
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
     public void addQuote(String data, String quote_text, String subject_name, String teacher_name){
 
         String insert = "INSERT INTO `quotes` (`id`, `date`, `quote_text`, `subject_id`, `teacher_id`) \n" +
