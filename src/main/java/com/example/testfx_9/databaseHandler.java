@@ -57,9 +57,9 @@ public class databaseHandler{
             ResultSet resultSet = preparedStatement.executeQuery();
             int count = 0;
             while (resultSet.next()){
-                role_level = resultSet.getString("role_level");
+                //role_level = resultSet.getString("role_level");
                 id = resultSet.getInt("id");
-                System.out.println("role_level = " + role_level);
+                //System.out.println("role_level = " + role_level);
                 count ++;
             }
 
@@ -126,8 +126,8 @@ public class databaseHandler{
             ResultSet resultSet = preparedStatement.executeQuery();
             int count = 0;
             while (resultSet.next()){
-                user_id_ok = resultSet.getInt("user_id");
-                System.out.println("id_user_ok = " + user_id_ok);
+                //user_id_ok = resultSet.getInt("user_id");
+                //System.out.println("id_user_ok = " + user_id_ok);
                 if(user_id_ok == id) {
                     count++;
                 }
@@ -151,7 +151,7 @@ public class databaseHandler{
             ArrayList id_quotes = new ArrayList<Integer>();
             while (resultSet.next()){
                 int quote_id = resultSet.getInt("quote_id");
-                System.out.println("quote_id_ok = " + quote_id);
+                //System.out.println("quote_id_ok = " + quote_id);
                 id_quotes.add(quote_id);
             }
             return id_quotes;
@@ -210,7 +210,7 @@ public class databaseHandler{
             preparedStatement.setInt(5, quotes_id);
 
             preparedStatement.executeUpdate();
-            System.out.println("Привет, как дела?");
+            //System.out.println("Привет, как дела?");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -271,7 +271,7 @@ public class databaseHandler{
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
             preparedStatement.setInt(1, MainController.id_quote);
             preparedStatement.setInt(2, user_id_ok);
-            System.out.println("USER_ID_OK = " + user_id_ok);
+            //System.out.println("USER_ID_OK = " + user_id_ok);
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -289,7 +289,7 @@ public class databaseHandler{
                 builder.append(String.format("%02X",password_hash));
                 //last_password_hash = password_hash;
             }
-            System.out.println(builder.toString() + "          ");
+            //System.out.println(builder.toString() + "          ");
             String newPassword = builder.toString();
             return newPassword;
         } catch (NoSuchAlgorithmException e) {

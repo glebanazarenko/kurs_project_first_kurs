@@ -32,7 +32,7 @@ public class signUpController {
             Node sourse = (Node) actionEvent.getSource();
             Stage stage = (Stage) sourse.getScene().getWindow();
             stage.close();
-            System.out.println("id user = " + databaseHandler.id );
+            //System.out.println("id user = " + databaseHandler.id );
             showDialog();
         }else {
             System.out.println("Нет аккаунта под таким логином и паролем");

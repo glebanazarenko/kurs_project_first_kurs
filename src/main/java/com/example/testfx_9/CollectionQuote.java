@@ -49,15 +49,6 @@ public class CollectionQuote implements Quote {
         return personList;
     }
 
-    public void print(){
-        int number = 0;
-        System.out.println();
-        for(Person person: personList){
-            number++;
-            System.out.println(number + ") fio = " + person.getFio() + "; quote = " + person.getQuote());
-        }
-    }
-
     public void fillTestData(){
         databaseHandler handler = new databaseHandler();
         ArrayList quotes = handler.Quotes();

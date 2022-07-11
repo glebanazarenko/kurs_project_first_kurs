@@ -76,10 +76,10 @@ public class MainGuestController {
 
     private void fillData() {
         quote.fillTestData();
-        System.out.println(tableQuote.getItems().size());
+        //System.out.println(tableQuote.getItems().size());
         tableQuote.setItems(quote.getPersonList());
-        System.out.println(tableQuote.getItems().size());
-        System.out.println(tableQuote.getItems().sorted().getComparator());
+        //System.out.println(tableQuote.getItems().size());
+        //System.out.println(tableQuote.getItems().sorted().getComparator());
     }
 
 

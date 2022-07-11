@@ -31,12 +31,12 @@ public class StartController {
                 break;
             case "login":
                 initLoaderSignUp();
-                mainStage.hide();
+                mainStage.close();
                 showDialogSignUp();
                 break;
             case "register":
                 initLoaderRegister();
-                mainStage.hide();
+                mainStage.close();
                 showDialogRegister();
                 break;
         }
@@ -85,6 +85,7 @@ public class StartController {
         editDialogStage.setTitle("Окно входа");
         editDialogStage.setMinWidth(408);
         editDialogStage.setMinHeight(106);
+        editDialogStage.setResizable(false);
         MainGuestController.setMainStage(editDialogStage);
         editDialogStage.setScene(new Scene(fxmlEdit));
         //для ожидание закрытия окна
@@ -106,9 +107,10 @@ public class StartController {
 
     private void showDialogRegister(){
         editDialogStage = new Stage();
-        editDialogStage.setTitle("Окно входа");
+        editDialogStage.setTitle("Окно регистрации");
         editDialogStage.setMinWidth(408);
         editDialogStage.setMinHeight(106);
+        editDialogStage.setResizable(false);
         MainGuestController.setMainStage(editDialogStage);
         editDialogStage.setScene(new Scene(fxmlEdit));
         //для ожидание закрытия окна
@@ -119,7 +121,7 @@ public class StartController {
 
     @FXML
     private void initialize() {
-        System.out.println("88003555555");
+        checkUserExist = false;
     }
 
     private Stage editDialogStage;

@@ -157,6 +157,7 @@ public class MainController {
             editDialogStage.setTitle("Окно редакции профиля");
             editDialogStage.setMinWidth(408);
             editDialogStage.setMinHeight(106);
+            editDialogStage.setResizable(false);
             MainGuestController.setMainStage(editDialogStage);
             editDialogStage.setScene(new Scene(fxmlEdit));
             StartController.checkUserExist = true;
@@ -230,10 +231,10 @@ public class MainController {
 
     private void fillData() {
         quote.fillTestData();
-        System.out.println(tableQuote.getItems().size());
+        //System.out.println(tableQuote.getItems().size());
         tableQuote.setItems(quote.getPersonList());
-        System.out.println(tableQuote.getItems().size());
-        System.out.println( tableQuote.getItems().sorted().getComparator());
+        //System.out.println(tableQuote.getItems().size());
+        //System.out.println( tableQuote.getItems().sorted().getComparator());
     }
 
     public void initListeners(){

@@ -34,7 +34,7 @@ public class registrationController {
         }else {
             dbHandler.registrationUser(txtName.getText(), txtLogin.getText(), dbHandler.hashPassword(txtPassword.getText()));
         }
-        System.out.println("id user = " + databaseHandler.id);
+        //System.out.println("id user = " + databaseHandler.id);
         initLoader();
         Node sourse = (Node) actionEvent.getSource();
         Stage stage = (Stage) sourse.getScene().getWindow();
