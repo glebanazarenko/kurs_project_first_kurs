@@ -41,6 +41,7 @@ public class EditDialogController {
         person.setSubject(txtSubject.getText());
         CollectionQuote.update(person, MainController.id_quote);
         actionClose(actionEvent);
+        MainController.initListeners();
     }
 
     @FXML

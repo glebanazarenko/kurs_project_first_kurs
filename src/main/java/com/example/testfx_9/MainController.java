@@ -80,9 +80,33 @@ public class MainController {
                 break;
 
             case "btnDelete":
-                quote.delete((Person) tableQuote.getSelectionModel().getSelectedItem());
                 databaseHandler handler = new databaseHandler();
-                handler.deleteQuote(selectedPerson.getData(), selectedPerson.getQuote(), selectedPerson.getSubject(), selectedPerson.getFio());
+                if(handler.checkQuote(id_quote) > 0 || databaseHandler.role_level.equals("admin")) {
+                    id_quote = handler.id_qoutes(selectedPerson.getData(), selectedPerson.getFio(), selectedPerson.getQuote(), selectedPerson.getSubject());
+                    quote.delete((Person) tableQuote.getSelectionModel().getSelectedItem());
+                    handler.deletequoteControl(selectedPerson.getData(), selectedPerson.getQuote(), selectedPerson.getSubject(), selectedPerson.getFio());
+                    handler.deleteQuote(selectedPerson.getData(), selectedPerson.getQuote(), selectedPerson.getSubject(), selectedPerson.getFio());
+                }else {
+                    if ((databaseHandler.role_level.equals("verifier"))) {
+                        ArrayList id_quotes = handler.checkQuoteVer(databaseHandler.id);
+                        boolean check = true;
+                        for (Object idQuote : id_quotes) {
+                            if ((Integer) idQuote == id_quote) {
+                                id_quote = handler.id_qoutes(selectedPerson.getData(), selectedPerson.getFio(), selectedPerson.getQuote(), selectedPerson.getSubject());
+                                quote.delete((Person) tableQuote.getSelectionModel().getSelectedItem());
+                                handler.deletequoteControl(selectedPerson.getData(), selectedPerson.getQuote(), selectedPerson.getSubject(), selectedPerson.getFio());
+                                handler.deleteQuote(selectedPerson.getData(), selectedPerson.getQuote(), selectedPerson.getSubject(), selectedPerson.getFio());
+                                check = false;
+                            }
+                        }
+                        if (check) {
+                            System.out.println("У вас нет доступа к этой цитате");
+                        }
+                    } else {
+                        System.out.println("У вас нет доступа к этой цитате");
+                    }
+                }
+
                 break;
 
             case "btnReturn":
@@ -177,7 +201,7 @@ public class MainController {
     private TableColumn<Person, String> columnSubject;
 
     @FXML
-    private Label labelCount;
+    private static Label labelCount;
 
     @FXML
     private void initialize(){
@@ -189,10 +213,10 @@ public class MainController {
         columnQuote.setCellValueFactory(new PropertyValueFactory<Person, String>("quote"));
         columnSubject.setCellValueFactory(new PropertyValueFactory<Person, String>("subject"));
 
+        fillData();
 
         initListeners();
 
-        fillData();
 
         initLoader();
     }
@@ -205,26 +229,8 @@ public class MainController {
         System.out.println( tableQuote.getItems().sorted().getComparator());
     }
 
-    private void initListeners(){
-        quote.getPersonList().addListener(new ListChangeListener<Person>() {
-            @Override
-            public void onChanged(Change<? extends Person> change) {
-                updateCountLabel();
-            }
-        });
-
-        tableQuote.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                if(mouseEvent.getClickCount() == 2){
-                    selectedPerson = (Person) tableQuote.getSelectionModel().getSelectedItem();
-                    if(selectedPerson != null) {
-                        editDialogController.setPerson(selectedPerson);
-                        showDialog();
-                    }
-                }
-            }
-        });
+    public static void initListeners(){
+        //updateCountLabel();
     }
 
     private void initLoader(){
@@ -238,8 +244,9 @@ public class MainController {
     }
 
     @FXML
-    private void updateCountLabel(){
-        labelCount.setText("Количество записей: " + quote.getPersonList().size());
+    private static void updateCountLabel(){
+        databaseHandler handler = new databaseHandler();
+        labelCount.setText("Количество записей: " + handler.countQuotes());
     }
 
     /*

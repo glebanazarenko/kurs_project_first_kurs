@@ -88,18 +88,6 @@ public class databaseHandler{
         }
     }
 
-    public void deleteUser(){
-        String insert = "DELETE FROM users\n" +
-                "WHERE users.id > 2";
-
-        try {
-            PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
-
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
     public ArrayList Quotes(){
         String insert = "SELECT a.date, t.teacher_name, a.quote_text, s.subject_name  " +
@@ -271,6 +259,22 @@ public class databaseHandler{
         }
     }
 
+    public void deletequoteControl(String data, String quote_text, String subject_name, String teacher_name){
+
+        String insert = "DELETE FROM control_quotes\n"+
+                "WHERE control_quotes.quote_id = ? AND control_quotes.user_id = ?";
+
+        try {
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
+            preparedStatement.setInt(1, MainController.id_quote);
+            preparedStatement.setInt(2, id);
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public String hashPassword(String password){
         try {
             MessageDigest md5 = MessageDigest.getInstance("MD5");
@@ -288,5 +292,27 @@ public class databaseHandler{
             e.printStackTrace();
         }
         return "";
+    }
+
+    public int countQuotes(){
+        String insert = "SELECT COUNT(*)\n" +
+                "FROM quotes, control_quotes\n" +
+                "WHERE quotes.id = control_quotes.quote_id AND control_quotes.user_id = ?;";
+
+        try{
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
+            preparedStatement.setInt(1, id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            int count_quotes = 0;
+            while (resultSet.next()) {
+                count_quotes ++;
+            }
+            return count_quotes;
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return 0;
     }
 }
