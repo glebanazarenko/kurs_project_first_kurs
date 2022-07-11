@@ -46,6 +46,7 @@ public class MainController {
             case "btnAdd":
                 check = "add";
                 editDialogController.setPerson(new Person());
+                signUpController.MainWindow.close();
                 showDialog();
                 quote.add(editDialogController.getPerson());
                 break;
@@ -57,15 +58,19 @@ public class MainController {
                     databaseHandler handler = new databaseHandler();
                     id_quote = handler.id_qoutes(selectedPerson.getData(), selectedPerson.getFio(), selectedPerson.getQuote(), selectedPerson.getSubject());
                     if(handler.checkQuote(id_quote) > 0 || databaseHandler.role_level.equals("admin")) {
+                        signUpController.MainWindow.close();
                         showDialog();
+                        initListeners();
                     }else{
                         if((databaseHandler.role_level.equals("verifier"))){
                             ArrayList id_quotes = handler.checkQuoteVer(databaseHandler.id);
                             boolean check = true;
                             for (Object idQuote : id_quotes) {
                                 if ((Integer) idQuote == id_quote) {
+                                    signUpController.MainWindow.close();
                                     showDialog();
                                     check = false;
+                                    initListeners();
                                 }
                             }
                             if(check){
@@ -86,6 +91,7 @@ public class MainController {
                     quote.delete((Person) tableQuote.getSelectionModel().getSelectedItem());
                     handler.deletequoteControl(selectedPerson.getData(), selectedPerson.getQuote(), selectedPerson.getSubject(), selectedPerson.getFio());
                     handler.deleteQuote(selectedPerson.getData(), selectedPerson.getQuote(), selectedPerson.getSubject(), selectedPerson.getFio());
+                    initListeners();
                 }else {
                     if ((databaseHandler.role_level.equals("verifier"))) {
                         ArrayList id_quotes = handler.checkQuoteVer(databaseHandler.id);
@@ -97,6 +103,7 @@ public class MainController {
                                 handler.deletequoteControl(selectedPerson.getData(), selectedPerson.getQuote(), selectedPerson.getSubject(), selectedPerson.getFio());
                                 handler.deleteQuote(selectedPerson.getData(), selectedPerson.getQuote(), selectedPerson.getSubject(), selectedPerson.getFio());
                                 check = false;
+                                initListeners();
                             }
                         }
                         if (check) {
@@ -215,9 +222,7 @@ public class MainController {
 
         fillData();
 
-        //initListeners();
-        databaseHandler handler = new databaseHandler();
-        labelCount.setText("Количество записей: " + handler.countQuotes());
+        initListeners();
 
 
         initLoader();

@@ -18,6 +18,7 @@ public class EditDialogController {
         Node sourse = (Node) actionEvent.getSource();
         Stage stage = (Stage) sourse.getScene().getWindow();
         stage.close();
+        signUpController.MainWindow.show();
         //MainController.closeDialog();
     }
 
@@ -41,6 +42,7 @@ public class EditDialogController {
         person.setSubject(txtSubject.getText());
         CollectionQuote.update(person, MainController.id_quote);
         actionClose(actionEvent);
+        signUpController.MainWindow.show();
     }
 
     @FXML

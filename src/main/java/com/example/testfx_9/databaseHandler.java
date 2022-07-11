@@ -299,7 +299,7 @@ public class databaseHandler{
     }
 
     public int countQuotes(){
-        String insert = "SELECT COUNT(*)\n" +
+        String insert = "SELECT control_quotes.quote_id\n" +
                 "FROM quotes, control_quotes\n" +
                 "WHERE quotes.id = control_quotes.quote_id AND control_quotes.user_id = ?;";
 
