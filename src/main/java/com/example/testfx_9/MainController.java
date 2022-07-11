@@ -201,7 +201,7 @@ public class MainController {
     private TableColumn<Person, String> columnSubject;
 
     @FXML
-    private static Label labelCount;
+    private Label labelCount;
 
     @FXML
     private void initialize(){
@@ -215,7 +215,9 @@ public class MainController {
 
         fillData();
 
-        initListeners();
+        //initListeners();
+        databaseHandler handler = new databaseHandler();
+        labelCount.setText("Количество записей: " + handler.countQuotes());
 
 
         initLoader();
@@ -229,8 +231,8 @@ public class MainController {
         System.out.println( tableQuote.getItems().sorted().getComparator());
     }
 
-    public static void initListeners(){
-        //updateCountLabel();
+    public void initListeners(){
+        updateCountLabel();
     }
 
     private void initLoader(){
@@ -244,7 +246,7 @@ public class MainController {
     }
 
     @FXML
-    private static void updateCountLabel(){
+    private void updateCountLabel(){
         databaseHandler handler = new databaseHandler();
         labelCount.setText("Количество записей: " + handler.countQuotes());
     }

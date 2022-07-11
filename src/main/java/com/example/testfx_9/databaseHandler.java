@@ -10,6 +10,7 @@ public class databaseHandler{
     static int id;
     static Connection connection;
     static String role_level;
+    static int user_id_ok;
     public static Connection getDbConnection(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -125,7 +126,7 @@ public class databaseHandler{
             ResultSet resultSet = preparedStatement.executeQuery();
             int count = 0;
             while (resultSet.next()){
-                int user_id_ok = resultSet.getInt("user_id");
+                user_id_ok = resultSet.getInt("user_id");
                 System.out.println("id_user_ok = " + user_id_ok);
                 if(user_id_ok == id) {
                     count++;
@@ -265,9 +266,12 @@ public class databaseHandler{
                 "WHERE control_quotes.quote_id = ? AND control_quotes.user_id = ?";
 
         try {
+            databaseHandler handler = new databaseHandler();
+            handler.checkQuote(MainController.id_quote);
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
             preparedStatement.setInt(1, MainController.id_quote);
-            preparedStatement.setInt(2, id);
+            preparedStatement.setInt(2, user_id_ok);
+            System.out.println("USER_ID_OK = " + user_id_ok);
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
